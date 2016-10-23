@@ -1,0 +1,83 @@
+<md-grid-list cols="4">
+
+	<form name="myform" #f="ngForm" (ngSubmit)="save()" novalidate>
+ 
+			<md-card class="demo-card demo-basic">
+				<md-toolbar color="primary">Profile</md-toolbar>
+				<md-card-content>
+
+					<table style="width: 100%" cellspacing="0">
+						<tr>
+							<td>
+								<md-input type="number" name="profile.LoanAmount" [(ngModel)]="profile.LoanAmount" placeholder="Loan amount" align="end">
+									<span md-prefix>$&nbsp;</span>
+									<span md-suffix>.00</span>
+								</md-input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<md-input type="number" name="profile.TotalTermYears" [(ngModel)]="profile.TotalTermYears" placeholder="Total Term in Years"
+									align="start">
+								</md-input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<md-checkbox name="profile.IncludePrincipal" [(ngModel)]="profile.IncludePrincipal">
+									Include Principal
+								</md-checkbox>
+
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="date" name="profile.LoanStartDate" [(ngModel)]="profile.LoanStartDate" />
+							</td>
+						</tr>
+						<tr>
+							<td> <select name="profile.PaymentFrequency" [(ngModel)]="profile.PaymentFrequency">
+                        <option *ngFor="let key of timeFrames" [value]="key.id">{{key.display}} </option>
+                    </select>
+							</td>
+						</tr>
+					</table> 
+				</md-card-content>
+			</md-card>
+	 
+			<md-card>
+				<md-card-title>Intrest Rates</md-card-title>
+				<md-card-content>
+
+					<md-list>
+						<md-list-item *ngFor="let finc of profile.Interest">
+							<md-list-item> {{finc.Amount}}% </md-list-item>
+							<md-list-item> {{finc.RatesTerm}}</md-list-item>
+							<md-list-item> {{finc.Frequency | dictionaryName:'TimeFrame'}}</md-list-item>
+							<button md-mini-fab name="finc.Interest" type="button" (click)="deleteRate(finc); $event.stopPropagation()" color="accent"> <md-icon class="md-24">delete</md-icon></button>
+						</md-list-item>
+					</md-list>
+				</md-card-content>
+				<md-card-actions>
+
+
+					<md-input type="number" min="0" name="emptyRate.Amount" [(ngModel)]="emptyRate.Amount" placeholder="Interest Rate" align="end">
+						<span md-suffix>%</span>
+					</md-input>
+
+					<select name="emptyRate.Frequency" [(ngModel)]="emptyRate.Frequency">
+                         <option *ngFor="let key of timeFrames" [value]="key.id"> {{key.display}} </option>
+                    </select>
+
+					<md-input type="number" min="0" name="emptyRate.RatesTerm" [(ngModel)]="emptyRate.RatesTerm" placeholder="Term" align="start">
+						<span md-suffix>Years</span>
+					</md-input>
+					<button md-mini-fab name="addIntrest" type="button" (click)="addRate()"> <md-icon class="md-24">add</md-icon></button>
+				</md-card-actions>
+			</md-card>
+		 
+		<br/>
+		<button md-raised-button type="submit" value="Save"> Save</button>
+	</form>
+</md-grid-list>
+<pre>{{profile | json }}</pre>
