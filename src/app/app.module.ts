@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
 import { DictionaryPipe } from './shared/shared.pipe';
- 
+import { fireBaseConfig } from './shared/firebase.config';
+
 @NgModule({
   imports: [
-    BrowserModule, routing, FormsModule
+    BrowserModule, routing, FormsModule,
   ],
   declarations: [
     AppComponent, SettingsComponent, HomeComponent, DictionaryPipe

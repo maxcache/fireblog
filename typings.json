@@ -1,8 +1,7 @@
 {
-  "name": "personalaccountant",
-  "dependencies": {},
+  "name": "fireblog",
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160725163759",  
-    "node": "registry:dt/node#6.0.0+20160909174046"
+    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "node": "registry:dt/node#6.0.0+20161110151007"
   }
 }
