@@ -1,7 +1,7 @@
 {
-  "name": "fireblog",
+  "name": "reactblog",
   "version": "0.1.0",
-  "description": "Firebase blog",
+  "description": "React blog",
   "main": "app.js",
   "scripts": {
     "start": "npm run serve",
@@ -13,36 +13,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxcache/fireblog.git"
+    "url": "git+https://github.com/maxcache/reactblog.git"
   },
   "keywords": [
-    "firebase",
+    "reactjs",
     "blog"
   ],
   "author": "Vikram",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maxcache/fireblog/issues"
+    "url": "https://github.com/maxcache/reactblog/issues"
   },
-  "homepage": "https://github.com/maxcache/fireblog#readme",
+  "homepage": "https://github.com/maxcache/reactblog#readme",
   "dependencies": {
-    "@angular/common": "2.2.1",
-    "@angular/compiler": "2.2.1",
-    "@angular/core": "2.2.1",
-    "@angular/forms": "2.2.1",
-    "@angular/http": "2.2.1",
-    "@angular/platform-browser": "2.2.1",
-    "@angular/platform-browser-dynamic": "2.2.1",
-    "@angular/router": "3.2.1",
-    "core-js": "2.4.1",
-    "reflect-metadata": "0.1.8",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "0.6.26"
+    
   },
-  "devDependencies": {
-    "angular2-template-loader": "^0.6.0",
-    "html-loader": "^0.4.4",
-    "html-webpack-plugin": "^2.24.1",
+  "devDependencies": { 
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.4",
     "ts-loader": "^1.2.2",
