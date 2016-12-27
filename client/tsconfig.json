@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
+  "compilerOptions": {
         "target": "es5",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -8,8 +8,5 @@
         "sourceMap": false,
         "removeComments": true,
         "noImplicitAny": false
-    },
-    "exclude": [
-        "node_modules"
-    ]
+    }    
 }
