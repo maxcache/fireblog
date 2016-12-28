@@ -3,10 +3,13 @@
 const gulp = require("gulp"),
     tsc = require("gulp-typescript"),
     sourcemaps = require('gulp-sourcemaps'),
-    tsProject = tsc.createProject("tsconfig.json"),
+    concat = require("gulp-concat"),
+    uglify = require("gulp-uglify"),
+    nodemon = require('gulp-nodemon'),
+
     runSequence = require('run-sequence'),
     rimraf = require('rimraf'),
-    nodemon = require('gulp-nodemon');
+    webpack = require('webpack-stream');
 
 //Delete the entire folder and recreate
 gulp.task('clean', (cb) => {
@@ -28,17 +31,13 @@ gulp.task('build:server', function () {
 
 
 gulp.task('build:client', function () {
-    var tsProject = tsc.createProject('client/tsconfig.json');
-    var tsResult = gulp.src('client/**/*.ts')
-        .pipe(sourcemaps.init())
-        .pipe(tsProject());
-    return tsResult.js
-        .pipe(sourcemaps.write())
+    return gulp.src(['client/**/*.ts', 'client/**/*.tsx'])
+        .pipe(webpack(require('./config/webpack.config.js')))
         .pipe(gulp.dest('dist/client'));
 });
- 
+
 gulp.task("clientResources", () => {
-    return gulp.src(["client/**/*", "!**/*.ts", "!client/typings", "!client/typings/**", "!client/*.json"])
+    return gulp.src(["client/**/*", "!**/*.ts", "!**/*.tsx", "!client/typings", "!client/typings/**", "!client/*.json", "!client/dist", "!client/dist/**"])
         .pipe(gulp.dest("dist/client"));
 });
 
@@ -49,23 +48,10 @@ gulp.task("serverResources", () => {
 });
 
 
-gulp.task("libs", () => {
-    return gulp.src([], {
-            cwd: "node_modules/**"
-        }) /* Glob required here. */
-        .pipe(gulp.dest("dist/client/libs"));
-});
-
-
-
-
 gulp.task("compile", () => {
-    let tsResult = gulp.src("client/**/*.ts")
-        .pipe(sourcemaps.init())
-        .pipe(tsProject());
-    return tsResult.js
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("dist/client"));
+    return gulp.src(['client/**/*.ts', 'client/**/*.tsx'])
+        .pipe(webpack(require('./config/webpack.config.js')))
+        .pipe(gulp.dest('dist/client'));
 });
 
 /**
@@ -73,7 +59,7 @@ gulp.task("compile", () => {
  */
 gulp.task('watch', function () {
 
-    gulp.watch(["client/**/*.ts"], ['compile']).on('change', function (e) {
+    gulp.watch(['client/**/*.ts', 'client/**/*.tsx'], ['compile']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
 
@@ -104,12 +90,12 @@ gulp.task('start', function () {
 });
 
 
- 
+
 gulp.task("build", function (callback) {
-    runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', 'libs', callback);
+    runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', callback);
 });
 
 
 gulp.task('default', function () {
-    runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', 'libs', 'watch', 'start');
+    runSequence('clean', 'build:server', 'build:client', 'clientResources', 'serverResources', 'watch', 'start');
 });
