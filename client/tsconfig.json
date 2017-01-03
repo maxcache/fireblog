@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
+        "lib": [
+            "es5",
+            "dom", "es2015.promise"
+        ],
         "target": "es5",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -9,5 +13,8 @@
         "removeComments": true,
         "noImplicitAny": false,
         "jsx": "react"
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

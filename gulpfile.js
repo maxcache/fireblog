@@ -67,7 +67,7 @@ gulp.task('watch', function () {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
 
-    gulp.watch(["server/src/**/*.ts"], ['compile']).on('change', function (e) {
+    gulp.watch(["server/src/**/*.ts"], ['build:server']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
 });

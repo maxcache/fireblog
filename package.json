@@ -22,9 +22,12 @@
   },
   "homepage": "https://github.com/maxcache/reactblog#readme",
   "dependencies": {
+    "@types/aws-sdk": "0.0.42",
     "@types/express": "^4.0.34",
+    "@types/node": "^6.0.54",
     "@types/react": "^0.14.55",
     "@types/react-router": "^2.0.41",
+    "aws-sdk": "^2.7.19",
     "express": "^4.14.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -39,13 +42,10 @@
     "gulp-uglify": "^2.0.0",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.2",
-
-
     "webpack": "^1.14.0",
     "webpack-stream": "^3.2.0",
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "source-map-loader": "^0.1.5",
-
     "typescript": "^2.1.4"
   }
 }

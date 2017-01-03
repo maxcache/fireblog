@@ -41,3 +41,6 @@ typings/
 
 #Ignore dist
 dist/
+
+#Ignore aws key
+aws.json
