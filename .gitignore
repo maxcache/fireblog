@@ -43,4 +43,5 @@ typings/
 dist/
 
 #Ignore aws key
-aws.json
+dynamodb.json
+cognito.json
