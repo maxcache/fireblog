@@ -3,14 +3,15 @@ import express = require('express');
 var router = express.Router();
 var app = express();
 import path = require('path');
-
+const dirFiles = path.resolve((path.dirname(__dirname), './dist/client/'));
 //Home page 
 var renderHomePage = (req: express.Request, res: express.Response) => {
-    console.log(req.path);
-    res.sendFile(path.resolve(__dirname, '../client/index.html'));
+    console.log(path.resolve(dirFiles + '/index.html'));
+    res.sendFile(path.resolve(dirFiles + '/index.html'));
+    //  res.sendStatus(200);
 }
 
+router.get('/*', renderHomePage);
 
-router.get('/', renderHomePage);
 
 module.exports = router;

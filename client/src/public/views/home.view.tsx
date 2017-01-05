@@ -13,10 +13,7 @@ var HomeView = React.createClass({
 
     render: function () {
         var loading = this.state.loaded ? "" : " (loading...)";
-        return <div>
-            <h2>Hello public {loading} Vicckky</h2>
-            <Posts/>
-        </div>;
+        return <div><Posts /></div>;
     }
 });
 

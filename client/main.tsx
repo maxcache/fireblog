@@ -3,4 +3,12 @@ import * as ReactDOM from "react-dom";
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
-ReactDOM.render(<Router history={browserHistory}>{routes}</Router>, document.getElementById('container'));
+import  injectTapEventPlugin  from 'react-tap-event-plugin';
+
+//injectTapEventPlugin();
+//injectTapEventPlugin();
+
+ 
+ReactDOM.render(
+   <Router history={browserHistory}>{routes}</Router>,
+    document.getElementById('container'));
